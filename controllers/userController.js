@@ -1,6 +1,6 @@
-import User from "../models/UserModel.js"
-
-const registerUser = async (req, res) => {
+import User from "../models/userModel.js"
+import asyncHandler from "express-async-handler"
+const registerUser = asyncHandler(async (req, res) => {
     const { name, email, password } = req.body
 
     const userExist = await User.findOne({ email })
@@ -23,11 +23,14 @@ const registerUser = async (req, res) => {
             email: user.name,
 
         })
+        console.log(user)
     } else {
         res.status(400)
         throw new Error("Invalid user data")
     }
-}
+})
+
+
 
 export { registerUser };
 
