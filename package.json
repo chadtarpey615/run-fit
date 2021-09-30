@@ -18,5 +18,13 @@
   "bugs": {
     "url": "https://github.com/chadtarpey615/run-fit/issues"
   },
-  "homepage": "https://github.com/chadtarpey615/run-fit#readme"
+  "homepage": "https://github.com/chadtarpey615/run-fit#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.8",
+    "nodemon": "^2.0.13"
+  }
 }
