@@ -65,3 +65,15 @@
   font-weight: 100;
   margin-top: 1rem;
 }
+
+.navbar {
+  display: flex;
+  list-style: none;
+  padding: 1.5rem 0;
+  justify-content: flex-end;
+  background-color: beige;
+}
+
+.navbar li {
+  margin: 0 1em;
+}
