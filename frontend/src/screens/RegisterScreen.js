@@ -1,14 +1,26 @@
 import React, { useState } from 'react'
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux"
+import { register } from "../actions/userActions"
+
+
 const RegisterScreen = () => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [password2, setPassword2] = useState("")
 
+
+    const dispatch = useDispatch()
+
     const registerUser = (e) => {
         e.preventDefault();
-        console.log(email, password2)
+        if (password !== password) {
+            alert("passwords does not match")
+        } else {
+            dispatch(register(name, email, password))
+
+        }
     }
     return (
         <div>
@@ -26,7 +38,7 @@ const RegisterScreen = () => {
                 </div>
                 <div className="email-input">
                     <label htmlFor="email">
-                        <input type="password" name="password2" placeholder="Please enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
+                        <input type="password" name="password" placeholder="Please enter your password" value={password} onChange={(e) => setPassword(e.target.value)} />
                     </label>
                 </div>
                 <div className="email-input">
