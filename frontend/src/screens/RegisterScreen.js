@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { register } from "../actions/userActions"
 
 
-const RegisterScreen = () => {
+const RegisterScreen = ({ history }) => {
     const [name, setName] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -15,11 +15,11 @@ const RegisterScreen = () => {
 
     const registerUser = (e) => {
         e.preventDefault();
-        if (password !== password) {
+        if (password !== password2) {
             alert("passwords does not match")
         } else {
             dispatch(register(name, email, password))
-
+            history.push("/home")
         }
     }
     return (

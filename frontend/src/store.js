@@ -7,7 +7,7 @@ import thunk from "redux-thunk"
 
 const reducer = combineReducers({
     userRegister: userRegisterReducer,
-
+    userLogin: userLoginReducer,
 })
 
 const initialState = {
