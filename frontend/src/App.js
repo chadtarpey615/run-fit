@@ -11,9 +11,9 @@ function App() {
     <Router>
       <Navbar />
       <div className="App">
-        <Route path="/" component={LoginScreen} exact />
+        <Route path="/login" component={LoginScreen} />
         <Route path="/register" component={RegisterScreen} />
-        <Route path="/home" component={HomeScreen} />
+        <Route path="/" component={HomeScreen} exact />
       </div>
     </Router>
 

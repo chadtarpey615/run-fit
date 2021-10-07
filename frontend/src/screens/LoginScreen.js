@@ -1,13 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom";
-const LoginScreen = () => {
+import { useDispatch, useSelector } from "react-redux"
+import { login } from "../actions/userActions"
+const LoginScreen = ({ history }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
 
+
+    const dispatch = useDispatch()
+    const userLogin = useSelector(state => state.userLogin)
+
+
+    useEffect(() => {
+        console.log(userLogin)
+    })
     const loginUser = (e) => {
         e.preventDefault();
-        console.log(email, password)
+        dispatch(
+            login(email, password)
+        )
+
+        history.push(`/`)
     }
+
     return (
         <div>
 

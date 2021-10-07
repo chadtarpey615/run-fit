@@ -1,7 +1,7 @@
 import path from "path";
 import express from "express"
 const router = express.Router();
-import { registerUser } from "../controllers/userController.js"
+import { registerUser, loginUser } from "../controllers/userController.js"
 
 
 
@@ -14,6 +14,6 @@ router.get("/", (req, res) => {
 })
 
 router.route("/").post(registerUser)
-
+router.route("/login").post(loginUser)
 
 export default router
