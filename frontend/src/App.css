@@ -103,7 +103,22 @@
   color: blue;
 }
 .main-btn {
+  padding: 20px 10px;
+}
+.main-btn button {
   padding: 20px 20px;
-  width: 8rem;
-  height: 4rem;
+  margin: 5px 15px;
+  width: 22rem;
+  height: 6rem;
+  border-radius: 6rem;
+  background-color: blue;
+  color: white;
+  font-weight: 300;
+  font-size: larger;
+}
+
+.blocks {
+  display: grid;
+  height: 30px;
+  width: 30px;
 }
