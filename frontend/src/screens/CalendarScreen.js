@@ -1,20 +1,17 @@
 import React from 'react'
-
+import Tile from "../components/Tile"
+import moment from 'moment'
 const CalendarScreen = () => {
-
-    const blocks = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-
-    blocks.map((day) => {
-        return (
-            <div className="blocks">
-                {day}
-            </div>
-        )
-    })
     return (
-        <div>
-            {blocks}
-        </div>
+        <>
+            <h1 className="title">Run Fit Calendar</h1>
+            <div className="date">
+                {moment().format('MMMM ')}
+            </div>
+            <div className="blocks">
+                <Tile date={moment()} />
+            </div>
+        </>
     )
 }
 

@@ -118,7 +118,30 @@
 }
 
 .blocks {
+  margin-top: 2rem;
+  box-sizing: border-box;
   display: grid;
-  height: 30px;
-  width: 30px;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+.tiles {
+  height: 8rem;
+  /* width: 50px; */
+  border: 2px solid black;
+}
+
+.title {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: 500;
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: xx-large;
+  font-weight: 500;
 }
