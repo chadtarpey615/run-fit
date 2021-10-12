@@ -19,7 +19,7 @@ const RegisterScreen = ({ history }) => {
             alert("passwords does not match")
         } else {
             dispatch(register(name, email, password))
-            history.push("/home")
+            history.push("/calendar")
         }
     }
     return (

@@ -20,7 +20,7 @@ const LoginScreen = ({ history }) => {
             login(email, password)
         )
 
-        history.push(`/`)
+        history.push(`/calendar`)
     }
 
     return (
