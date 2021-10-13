@@ -145,3 +145,80 @@
   font-size: xx-large;
   font-weight: 500;
 }
+
+.DayPicker-Month {
+  height: 60vh;
+  width: 40vw;
+  margin: 20px 30px;
+}
+
+.DayPicker {
+  display: inline;
+  margin: 20px 60px;
+}
+
+.DayPicker-Day {
+  border: 2px solid #333;
+}
+
+.DayPicker-Navbar {
+  display: flex;
+}
+
+.DayPicker-NavButton--next {
+  margin-right: 40rem;
+}
+
+.DayPicker-NavButton--prev {
+  margin-right: 42rem;
+}
+
+@media only screen and (max-width: 1400px) {
+  .DayPicker-NavButton--next {
+    margin-right: 30rem;
+  }
+
+  .DayPicker-NavButton--prev {
+    margin-right: 32rem;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .DayPicker-NavButton--next {
+    margin-right: 25rem;
+  }
+
+  .DayPicker-NavButton--prev {
+    margin-right: 27rem;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .DayPicker-NavButton--next {
+    margin-right: 22rem;
+  }
+
+  .DayPicker-NavButton--prev {
+    margin-right: 24rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .DayPicker-NavButton--next {
+    margin-right: 20rem;
+  }
+
+  .DayPicker-NavButton--prev {
+    margin-right: 22rem;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  .DayPicker-NavButton--next {
+    margin-right: 20rem;
+  }
+
+  .DayPicker-NavButton--prev {
+    margin-right: 22rem;
+  }
+}
