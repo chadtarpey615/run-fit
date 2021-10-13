@@ -173,6 +173,26 @@
   margin-right: 42rem;
 }
 
+.run-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.run-form input {
+  margin-top: 12px;
+  width: 20vw;
+  height: 5vh;
+  border-radius: 10px;
+}
+.run-form button {
+  margin-top: 12px;
+  width: 20vw;
+  height: 5vh;
+  border-radius: 10px;
+}
+
 @media only screen and (max-width: 1400px) {
   .DayPicker-NavButton--next {
     margin-right: 30rem;
@@ -204,6 +224,11 @@
 }
 
 @media only screen and (max-width: 900px) {
+  .DayPicker-Month {
+    height: 50vh;
+    width: 70vw;
+    margin: 20px 30px;
+  }
   .DayPicker-NavButton--next {
     margin-right: 20rem;
   }
