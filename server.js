@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv"
 import connectDB from "./config/db.js"
 import userRoutes from "./routes/userRoutes.js";
+import eventRoutes from "./routes/eventRoutes.js";
 const app = express();
 const PORT = process.env.PORT || 3001;
 dotenv.config()
@@ -21,6 +22,7 @@ app.get("/", (req, res) => {
 
 // Add routes, both API and view
 app.use("/api/users", userRoutes);
+app.use("/api/events", eventRoutes);
 
 // Connect to the Mongo DB
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactreadinglist");
