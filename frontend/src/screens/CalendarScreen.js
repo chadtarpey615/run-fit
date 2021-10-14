@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import DayPicker from 'react-day-picker';
+import { useDispatch, useSelector } from "react-redux"
+import { createEvent } from "../actions/eventActions"
 import 'react-day-picker/lib/style.css';
 import Tile from "../components/Tile"
 import moment from 'moment'
 // import { useDispatch, useSelector } from "react-redux"
 
 const CalendarScreen = () => {
+    const dispatch = useDispatch()
 
     const [selectDay, setSelectDay] = useState(null)
     const [eventName, setEventName] = useState("")
@@ -19,7 +22,11 @@ const CalendarScreen = () => {
     const enterEventHandler = (e) => {
         e.preventDefault()
 
-        console.log(eventDate)
+        dispatch(createEvent({
+            name: eventName,
+            date: eventDate,
+            distance: eventDistance
+        }))
     }
 
     return (
@@ -40,7 +47,7 @@ const CalendarScreen = () => {
                     </div>
                     <div >
                         <label htmlFor="date" > </label>
-                        <input type="text" placeholder={`Event Date ${selectDay}`} onMouseEnter={(e) => setEventDate(selectDay)} clicked />
+                        <input type="text" placeholder={`Event Date ${selectDay}`} onMouseEnter={(e) => setEventDate(selectDay)} />
 
                     </div>
                     <div >
