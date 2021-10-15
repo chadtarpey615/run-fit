@@ -5,6 +5,7 @@ const saveEvent = asyncHandler(async (req, res) => {
     const { name, date, distance } = req.body
 
     const event = new Event({
+        user: req.user._id,
         name,
         date,
         distance
