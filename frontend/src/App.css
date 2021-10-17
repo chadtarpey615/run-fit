@@ -1,7 +1,9 @@
-/* .App {
-  text-align: center;
+.App {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
-
+/*
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -153,7 +155,8 @@
 }
 
 .DayPicker {
-  display: inline;
+  display: flex;
+  justify-content: center;
   margin: 20px 60px;
 }
 
@@ -162,16 +165,16 @@
 }
 
 .DayPicker-Navbar {
-  display: flex;
+  /* display: flex; */
 }
-
+/* 
 .DayPicker-NavButton--next {
   margin-right: 40rem;
 }
 
 .DayPicker-NavButton--prev {
   margin-right: 42rem;
-}
+} */
 
 .run-form {
   display: flex;
@@ -193,6 +196,26 @@
   border-radius: 10px;
 }
 
+/* .calendar {
+  display: flex;
+} */
+
+.event-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clear-btn {
+  margin-right: 4px;
+}
+.clear-btn,
+.show-btn {
+  width: 8rem;
+  height: 2rem;
+  border-radius: 12px;
+}
+/* 
 @media only screen and (max-width: 1400px) {
   .DayPicker-NavButton--next {
     margin-right: 30rem;
@@ -246,4 +269,4 @@
   .DayPicker-NavButton--prev {
     margin-right: 22rem;
   }
-}
+} */

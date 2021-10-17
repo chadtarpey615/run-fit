@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import DayPicker from 'react-day-picker';
+import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { createEvent } from "../actions/eventActions"
 import 'react-day-picker/lib/style.css';
@@ -35,7 +36,10 @@ const CalendarScreen = () => {
             <DayPicker onDayClick={(e) => setSelectDay(e)}
 
             />
-            <button onClick={(e) => setSelectDay(null)}></button>
+            <div className="event-btn">
+                <button className="clear-btn" onClick={(e) => setSelectDay(null)}>Clear Input</button>
+                <Link to="/all-events"><button className="show-btn">See all Events</button></Link>
+            </div>
             {selectDay ? (
                 <form className="run-form" onSubmit={enterEventHandler}>
                     <h1>Add run event form </h1>
