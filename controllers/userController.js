@@ -48,7 +48,7 @@ const loginUser = asyncHandler(async (req, res) => {
             email: user.email,
             token: generateToken(user._id)
         })
-        console.log(user.token)
+        console.log("user token", user.token, user._id)
     } else {
         res.status(401)
         throw new Error("Invalid email or password")

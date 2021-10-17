@@ -14,6 +14,6 @@ router.get("/", (req, res) => {
 })
 
 router.route("/").post(registerUser)
-router.route("/login").post(loginUser)
+router.post("/login", loginUser)
 
 export default router
