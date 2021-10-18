@@ -1,17 +1,33 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
+import RunEvents from "../components/RunEvents"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllEvents } from "../actions/eventActions"
 const Events = () => {
+    // const [event, setEvent] = useState()
     const dispatch = useDispatch()
-
+    const eventList = useSelector(state => state.eventCreate)
+    const { loading, event } = eventList
+    console.log(event)
     useEffect(() => {
-        const { data } = dispatch(getAllEvents())
-
-        console.log(data)
-    })
+        dispatch(getAllEvents())
+        // setEvent(eventList)
+        // console.log(event)
+    }, [dispatch])
     return (
         <div>
-            <h1>All Events</h1>
+            {
+
+                event.map(event => (
+
+
+                    <RunEvents event={event} />
+
+
+
+                ))
+            }
+
+
         </div>
     )
 }

@@ -5,6 +5,6 @@ import { authProtect } from "../middleware/authMiddleware.js"
 const router = express.Router();
 
 router.route("/").post(authProtect, saveEvent)
-router.route("/all-events").get(allEvents)
+router.get("/all-events", allEvents)
 
 export default router

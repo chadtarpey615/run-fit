@@ -40,6 +40,7 @@ export const getAllEvents = (events) => async (dispatch) => {
 
 
         const { data } = await axios.get("/api/events/all-events")
+        console.log(data)
 
         dispatch({
             type: EVENT_CREATE_SUCCESS,
