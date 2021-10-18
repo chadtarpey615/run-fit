@@ -5,30 +5,36 @@ import { getAllEvents } from "../actions/eventActions"
 const Events = () => {
     // const [event, setEvent] = useState()
     const dispatch = useDispatch()
-    const eventList = useSelector(state => state.eventCreate)
-    const { loading, event } = eventList
-    console.log(event)
+
     useEffect(() => {
         dispatch(getAllEvents())
         // setEvent(eventList)
         // console.log(event)
     }, [dispatch])
+
+    const eventList = useSelector(state => state.eventCreate)
+    const { loading, event } = eventList
+    console.log(event)
+
     return (
-        <div>
-            {
+        <>
+            <h1 className="event-title">Let's check out the upcoming events</h1>
+            <div className="all-events">
+                {
 
-                event.map(event => (
-
-
-                    <RunEvents event={event} />
-
+                    event.map(event => (
 
 
-                ))
-            }
+                        <RunEvents event={event} />
 
 
-        </div>
+
+                    ))
+                }
+
+
+            </div>
+        </>
     )
 }
 
