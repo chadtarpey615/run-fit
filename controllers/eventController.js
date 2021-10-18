@@ -1,6 +1,5 @@
 import Event from "../models/eventModel.js"
 import asyncHandler from "express-async-handler"
-
 const saveEvent = asyncHandler(async (req, res) => {
     const { name, date, distance } = req.body
 
@@ -15,4 +14,10 @@ const saveEvent = asyncHandler(async (req, res) => {
     res.status(201).json(createdEvent)
 })
 
-export { saveEvent }
+
+const allEvents = asyncHandler(async (req, res) => {
+    const events = await Event.find({})
+    res.json(events)
+})
+
+export { saveEvent, allEvents }
