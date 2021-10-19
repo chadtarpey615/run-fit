@@ -1,4 +1,4 @@
-import { EVENT_CREATE_FAIL, EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_GET_REQUEST, EVENT_GET_FAIL } from "../constants/eventConstants"
+import { EVENT_CREATE_FAIL, EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS } from "../constants/eventConstants"
 import axios from "axios"
 
 export const createEvent = (event) => async (dispatch, getState) => {
@@ -8,11 +8,12 @@ export const createEvent = (event) => async (dispatch, getState) => {
         })
 
         const { userLogin: { userInfo } } = getState()
-
+        // const {userInfo.token}
+        console.log(userInfo.data.token)
         const config = {
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${userInfo.token}`
+                Authorization: `Bearer ${userInfo.data.token}`
             }
         }
 
@@ -40,10 +41,10 @@ export const getAllEvents = (events) => async (dispatch) => {
 
 
         const { data } = await axios.get("/api/events/all-events")
-        console.log(data)
+        // console.log(data)
 
         dispatch({
-            type: EVENT_CREATE_SUCCESS,
+            type: EVENT_GET_SUCCESS,
             payload: data
         })
 

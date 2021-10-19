@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import DayPicker from 'react-day-picker';
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { createEvent } from "../actions/eventActions"
+import { getAllEvents } from "../actions/eventActions"
 import 'react-day-picker/lib/style.css';
 import Tile from "../components/Tile"
 import moment from 'moment'
-// import { useDispatch, useSelector } from "react-redux"
 
 const CalendarScreen = () => {
     const dispatch = useDispatch()
@@ -29,6 +29,16 @@ const CalendarScreen = () => {
             distance: eventDistance
         }))
     }
+
+    // const eventList = useSelector(state => state.allEvents)
+    // const { events } = eventList
+
+    // console.log(events)
+    // useEffect(() => {
+    //     dispatch(getAllEvents())
+
+
+    // }, [dispatch])
 
     return (
         <>

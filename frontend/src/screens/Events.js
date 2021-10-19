@@ -3,18 +3,24 @@ import RunEvents from "../components/RunEvents"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllEvents } from "../actions/eventActions"
 const Events = () => {
-    // const [event, setEvent] = useState()
+    // const [event, setEvent] = useState([])
     const dispatch = useDispatch()
-
     useEffect(() => {
         dispatch(getAllEvents())
-        // setEvent(eventList)
-        // console.log(event)
-    }, [dispatch])
 
-    const eventList = useSelector(state => state.eventCreate)
-    const { loading, event } = eventList
-    console.log(event)
+
+
+    }, [dispatch])
+    const eventList = useSelector(state => state.allEvents)
+    const { events } = eventList
+
+
+
+    console.log(events)
+
+
+
+
 
     return (
         <>
@@ -22,7 +28,7 @@ const Events = () => {
             <div className="all-events">
                 {
 
-                    event.map(event => (
+                    events.map(event => (
 
 
                         <RunEvents event={event} />
