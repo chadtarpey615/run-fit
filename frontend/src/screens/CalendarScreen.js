@@ -15,7 +15,7 @@ const CalendarScreen = () => {
     const [eventName, setEventName] = useState("")
     const [eventDate, setEventDate] = useState("")
     const [eventDistance, setEventDistance] = useState("")
-
+    // const regex = /T/i
     // const handleDay = (e) => {
     //     setSelectDay(e)
     // }
@@ -25,7 +25,7 @@ const CalendarScreen = () => {
 
         dispatch(createEvent({
             name: eventName,
-            date: eventDate,
+            date: eventDate.toLocaleDateString(),
             distance: eventDistance
         }))
     }
