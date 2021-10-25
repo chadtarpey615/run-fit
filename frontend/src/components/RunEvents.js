@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from "react-redux"
+import { removeEvent } from "../actions/eventActions"
 import Modal from "react-modal"
 const RunEvents = ({ event }) => {
-    const { name, date, distance } = event
-    console.log(date)
+    const { name, date, distance, _id } = event
+
     const [modalIsOpen, setModalOpen] = useState(false)
+    const dispatch = useDispatch()
 
     const openModal = () => {
         setModalOpen(true)
@@ -27,6 +30,11 @@ const RunEvents = ({ event }) => {
             transform: 'translate(-50%, -50%)',
         },
     };
+
+    const deleteEvent = (_id) => {
+        console.log(_id)
+        dispatch(removeEvent(_id))
+    }
 
     return (
         <div >
@@ -63,7 +71,7 @@ const RunEvents = ({ event }) => {
 
                 </Modal>
 
-                <button>Remove event</button>
+                <button onClick={deleteEvent(_id)}>Remove event</button>
             </section>
 
 

@@ -1,4 +1,4 @@
-import { EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_CREATE_FAIL, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS } from "../constants/eventConstants.js"
+import { EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_CREATE_FAIL, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS } from "../constants/eventConstants.js"
 
 export const eventCreateReducer = (state = {}, action) => {
     switch (action.type) {
@@ -48,4 +48,21 @@ export const getEventsReducer = (state = { events: [] }, action) => {
         default:
             return state
     }
+}
+
+export const removeEventReducer = (state = { events: [] }, action) => {
+    switch (action.type) {
+
+
+        case EVENT_DELETE_SUCCESS:
+            return {
+                ...state,
+                events: state.events.filter(x => x.events !== action.payload)
+
+
+            }
+        default:
+            return state
+    }
+
 }
