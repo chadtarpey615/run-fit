@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { removeEvent } from "../actions/eventActions"
-import Modal from "react-modal"
-const RunEvents = ({ event }) => {
+// import Modal from "react-modal"
+import Modal from "../components/Modal"
+const RunEvents = ({ event, props }) => {
     const { name, date, distance, _id } = event
 
     const [modalIsOpen, setModalOpen] = useState(false)
@@ -48,13 +49,15 @@ const RunEvents = ({ event }) => {
                 <h4>{distance}</h4>
                 <button onClick={openModal}>Open Modal</button>
                 <Modal
-                    isOpen={modalIsOpen}
-                    onAfterOpen={afterOpenModal}
-                    onRequestClose={closeModal}
-                    style={customStyles}
-                    contentLabel="Example Modal"
+                    show={modalIsOpen}
+
+                    header={name}
+                    content={"place-item__modal-content"}
+                    footerClass="place-item__modal-actions"
+                    footer={<button onClick={closeModal}>Close</button>}
                 >
-                    <div className="modal">
+
+                    {/* <div className="modal">
                         <h2> Race: {event.name}</h2>
                         <i class="fa fa-5x fa-road" aria-hidden="true"></i>
                         <button onClick={closeModal}>close</button>
@@ -67,7 +70,7 @@ const RunEvents = ({ event }) => {
                             </div>
 
                         </form>
-                    </div>
+                    </div> */}
 
                 </Modal>
 
