@@ -1,12 +1,12 @@
 import React from 'react'
 import ReactDOM from "react-dom";
 import { CSSTransition } from "react-transition-group"
-
-
+import BackDrop from "../components/BackDrop"
+import "./Modal.css"
 
 const Overlay = (props) => {
     const content = (
-        <div className={`modal ${props.className}`} style={props.style}>
+        <div className={`modal `} style={props.style}>
             <header className={`modal-header ${props.headerClass}`}>
                 <h2>{props.header}</h2>
             </header>
@@ -25,16 +25,19 @@ const Overlay = (props) => {
 }
 const Modal = (props) => {
     return (
-        <CSSTransition
-            in={props.show}
-            mountOnEnter
-            unmountOnExit
-            timeout={200}
-            classNames="modal">
-            <Overlay {...props} />
+        <>
+            {props.show && <BackDrop onClick={props.onCancel} />}
+            <CSSTransition
+                in={props.show}
+                mountOnEnter
+                unmountOnExit
+                timeout={200}
+                classNames="modal">
+                <Overlay {...props} />
 
 
-        </CSSTransition>
+            </CSSTransition>
+        </>
     )
 }
 

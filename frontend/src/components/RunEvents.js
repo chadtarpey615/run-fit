@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from "react-redux"
 import { removeEvent } from "../actions/eventActions"
+import Card from "../components/Card"
 // import Modal from "react-modal"
 import Modal from "../components/Modal"
 const RunEvents = ({ event, props }) => {
@@ -43,19 +44,13 @@ const RunEvents = ({ event, props }) => {
 
 
             <section className="events">
-                <i class="fa fa-5x fa-road" aria-hidden="true"></i>
-                <h1>{name}</h1>
-                <h4>{date}</h4>
-                <h4>{distance}</h4>
-                <button onClick={openModal}>Open Modal</button>
-                <Modal
-                    show={modalIsOpen}
+                <Card>
+                    <i class="fa fa-5x fa-road" aria-hidden="true"></i>
+                    <h1>{name}</h1>
+                    <h4>{date}</h4>
+                    <h4>{distance}</h4>
+                    <button onClick={openModal}>Check out event</button>
 
-                    header={name}
-                    content={"place-item__modal-content"}
-                    footerClass="place-item__modal-actions"
-                    footer={<button onClick={closeModal}>Close</button>}
-                >
 
                     {/* <div className="modal">
                         <h2> Race: {event.name}</h2>
@@ -72,9 +67,20 @@ const RunEvents = ({ event, props }) => {
                         </form>
                     </div> */}
 
-                </Modal>
 
-                <button onClick={deleteEvent(_id)}>Remove event</button>
+
+                    <button onClick={deleteEvent(_id)}>Remove event</button>
+                </Card>
+                <Modal
+                    show={modalIsOpen}
+
+                    header={name}
+                    onCancel={closeModal}
+                    content={"place-item-modal-content"}
+                    footerClass="place-item-modal-actions"
+                    footer={<button onClick={closeModal}>begin</button>}
+                >
+                </Modal>
             </section>
 
 
