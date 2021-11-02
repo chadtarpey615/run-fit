@@ -45,7 +45,7 @@ const RunEvents = ({ event, props }) => {
 
             <section className="events">
                 <Card>
-                    <i class="fa fa-5x fa-road" aria-hidden="true"></i>
+                    <i className="fa fa-5x fa-road" aria-hidden="true"></i>
                     <h1>{name}</h1>
                     <h4>{date}</h4>
                     <h4>{distance}</h4>
@@ -69,7 +69,7 @@ const RunEvents = ({ event, props }) => {
 
 
 
-                    <button onClick={deleteEvent(_id)}>Remove event</button>
+                    <button onClick={() => deleteEvent(_id)}>Remove event</button>
                 </Card>
                 <Modal
                     show={modalIsOpen}
@@ -78,7 +78,14 @@ const RunEvents = ({ event, props }) => {
                     onCancel={closeModal}
                     content={"place-item-modal-content"}
                     footerClass="place-item-modal-actions"
-                    footer={<button onClick={closeModal}>begin</button>}
+                    footer={
+                        <div>
+                            <i class="fa fa-5x fa-road" aria-hidden="true"></i>
+
+                            <h1>{name}</h1>
+                            <h2>{date}</h2>
+                            <h4>{distance} miles</h4>
+                        </div>}
                 >
                 </Modal>
             </section>

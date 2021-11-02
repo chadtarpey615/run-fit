@@ -57,7 +57,9 @@ export const getAllEvents = (events) => async (dispatch) => {
 
 }
 
-export const removeEvent = (id) => (dispatch, getState) => {
+export const removeEvent = (id) => async (dispatch, getState) => {
+    const response = await axios(`/api/events/${id}`)
+    console.log(response)
     dispatch({
         type: EVENT_DELETE_SUCCESS,
         payload: id

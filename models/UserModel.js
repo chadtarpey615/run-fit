@@ -13,8 +13,16 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         required: true
-    }
+    },
+
+    events: [
+        {
+            type: mongoose.Types.ObjectId, required: true, ref: "Event"
+        }
+    ],
 },
+
+
     {
         timestamps: true
     }
