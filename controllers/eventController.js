@@ -47,6 +47,7 @@ const allEvents = asyncHandler(async (req, res) => {
 
 const getEventById = asyncHandler(async (req, res) => {
     const eventId = req.params.id
+
     try {
         const response = await Event.findById(eventId)
         console.log(response.user)
@@ -60,12 +61,34 @@ const getEventById = asyncHandler(async (req, res) => {
 
 
 
-const deleteEvent = async (req, res) => {
-    // const eventId = req.params._id
-    // console.log(eventId)
+const deleteEvent = asyncHandler(async (req, res) => {
+    const eventId = req.params.id
 
-    // const event = await Event.findById(eventId).populate("user")
-    console.log("delete route hit")
-}
+    let event
+    try {
+        event = await Event.findById(eventId).populate("user")
+
+    } catch (error) {
+        console.log(error)
+    }
+
+    if (!event) {
+        console.log("no event found created by user")
+    }
+
+
+    try {
+        const sess = await Mongoose.startSession()
+        sess.startTransaction()
+        await event.remove({ session: sess })
+        event.user.events.pull(event)
+        await event.user.save({ session: sess })
+        await sess.commitTransaction()
+    } catch (error) {
+        console.log(error)
+    }
+
+    res.status(200).json({ message: "Deleted place" })
+})
 
 export { saveEvent, allEvents, deleteEvent, getEventById }

@@ -6,7 +6,7 @@ const router = express.Router();
 
 router.route("/").post(authProtect, saveEvent)
 router.get("/all-events", allEvents)
-router.get("/:id", getEventById)
+router.get("/:id", deleteEvent)
 
 
 
