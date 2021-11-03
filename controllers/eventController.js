@@ -2,6 +2,9 @@ import Event from "../models/eventModel.js"
 import User from "../models/userModel.js"
 import asyncHandler from "express-async-handler"
 import Mongoose from "mongoose"
+
+
+
 const saveEvent = asyncHandler(async (req, res) => {
     const { name, date, distance } = req.body
 
@@ -42,11 +45,27 @@ const allEvents = asyncHandler(async (req, res) => {
     res.json(events)
 })
 
-const deleteEvent = asyncHandler(async (req, res) => {
+const getEventById = asyncHandler(async (req, res) => {
     const eventId = req.params.id
+    try {
+        const response = await Event.findById(eventId)
+        console.log(response.user)
+    } catch (error) {
 
-    const event = await Event.findById(eventId)
-    console.log(event)
+    }
+
 })
 
-export { saveEvent, allEvents, deleteEvent }
+
+
+
+
+const deleteEvent = async (req, res) => {
+    // const eventId = req.params._id
+    // console.log(eventId)
+
+    // const event = await Event.findById(eventId).populate("user")
+    console.log("delete route hit")
+}
+
+export { saveEvent, allEvents, deleteEvent, getEventById }

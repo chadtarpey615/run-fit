@@ -1,4 +1,4 @@
-import { EVENT_CREATE_FAIL, EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS } from "../constants/eventConstants"
+import { EVENT_CREATE_FAIL, EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_DELETE_REQUEST } from "../constants/eventConstants"
 import axios from "axios"
 
 export const createEvent = (event) => async (dispatch, getState) => {
@@ -58,10 +58,20 @@ export const getAllEvents = (events) => async (dispatch) => {
 }
 
 export const removeEvent = (id) => async (dispatch, getState) => {
-    const response = await axios(`/api/events/${id}`)
-    console.log(response)
-    dispatch({
-        type: EVENT_DELETE_SUCCESS,
-        payload: id
-    })
+    try {
+        dispatch({
+            type: EVENT_DELETE_REQUEST
+        })
+
+        const response = await axios.get(`http://localhost:3001/api/events/${id}`)
+        console.log(response)
+
+        dispatch({
+            type: EVENT_DELETE_SUCCESS,
+            payload: id
+        })
+    } catch (error) {
+
+    }
+
 }

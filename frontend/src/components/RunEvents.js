@@ -33,9 +33,11 @@ const RunEvents = ({ event, props }) => {
         },
     };
 
-    const deleteEvent = (_id) => {
-        console.log(_id)
-        dispatch(removeEvent(_id))
+    const deleteEvent = async (id) => {
+
+        dispatch(removeEvent(id))
+        console.log(id)
+
     }
 
     return (
