@@ -22,7 +22,7 @@ const Navbar = () => {
                 {userInfo ? (
                     <>
                         <li>Welcome {userInfo.data.name}</li>
-                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/calendar">Home</Link></li>
                         <li onClick={logoutHandler}><Link to="/login">Logout</Link></li>
 
                     </>

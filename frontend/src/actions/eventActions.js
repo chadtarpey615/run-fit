@@ -1,4 +1,4 @@
-import { EVENT_CREATE_FAIL, EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_DELETE_REQUEST } from "../constants/eventConstants"
+import { EVENT_CREATE_FAIL, EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_DELETE_REQUEST, EVENT_UPDATE_REQUEST, EVENT_UPDATE_FAIL, EVENT_UPDATE_SUCCESS } from "../constants/eventConstants"
 import axios from "axios"
 
 export const createEvent = (event) => async (dispatch, getState) => {
@@ -57,6 +57,43 @@ export const getAllEvents = (events) => async (dispatch) => {
 
 }
 
+export const updateEvent = () => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: EVENT_UPDATE_REQUEST
+        })
+
+        const { userLogin: { userInfo } } = getState()
+
+        const config = {
+            headers: {
+                "Content-type": "application/json",
+                Authorization: `Bearer ${userInfo.data.token}`
+
+            }
+        }
+
+        const { data } = await axios.put(`/api/events/${id}`,
+            config
+        )
+
+
+        dispatch({
+            type: EVENT_UPDATE_SUCCESS,
+            payload: data
+        })
+
+
+
+
+    } catch (error) {
+        dispatch({
+            type: EVENT_UPDATE_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message,
+        })
+    }
+}
+
 export const removeEvent = (id) => async (dispatch, getState) => {
     try {
         dispatch({
@@ -71,7 +108,7 @@ export const removeEvent = (id) => async (dispatch, getState) => {
             payload: id
         })
     } catch (error) {
-
+        console.log(error)
     }
 
 }

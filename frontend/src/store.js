@@ -1,6 +1,6 @@
 import { createStore, combineReducers, applyMiddleware } from "redux"
 import { userRegisterReducer } from "./reducers/userReducers"
-import { eventCreateReducer, getEventsReducer, removeEventReducer } from "./reducers/eventReducers"
+import { eventCreateReducer, getEventsReducer, removeEventReducer, updateEventReducer } from "./reducers/eventReducers"
 import { composeWithDevTools } from "redux-devtools-extension"
 import { userLoginReducer } from "./reducers/userReducers"
 import thunk from "redux-thunk"
@@ -11,7 +11,8 @@ const reducer = combineReducers({
     userLogin: userLoginReducer,
     eventCreate: eventCreateReducer,
     allEvents: getEventsReducer,
-    removeEvent: removeEventReducer
+    removeEvent: removeEventReducer,
+    updateEvent: updateEventReducer
 })
 
 const userInfoFromStorage = localStorage.getItem("userInfo") ? JSON.parse(localStorage.getItem("userInfo")) : null

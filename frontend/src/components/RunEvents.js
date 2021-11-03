@@ -9,17 +9,15 @@ import Modal from "../components/Modal"
 
 const RunEvents = ({ event, props }) => {
     const { name, date, distance, _id } = event
-    const [updateForm, setUpdateForm] = useState(null)
-
+    const [updateForm, setUpdateForm] = useState(false)
     const [modalIsOpen, setModalOpen] = useState(false)
-    const eventList = useSelector(state => state.allEvents)
-    const { events } = eventList
+    const [eventName, setEventName] = useState("")
+    const [eventDate, setEventDate] = useState("")
+    const [eventDistance, setEventDistance] = useState("")
+
     const dispatch = useDispatch()
 
-    const openModal = () => {
-        setModalOpen(true)
-
-    }
+    const openModal = () => { setModalOpen(true) }
 
     const openFormModal = () => {
         setUpdateForm(true)
@@ -28,6 +26,8 @@ const RunEvents = ({ event, props }) => {
 
     const closeModal = () => {
         setModalOpen(false)
+        setUpdateForm(false)
+
     }
 
     const deleteEvent = async (id) => {
@@ -38,9 +38,6 @@ const RunEvents = ({ event, props }) => {
 
     return (
         <div >
-
-
-
             <section className="events">
                 <Card>
                     <i className="fa fa-5x fa-road" aria-hidden="true"></i>
@@ -53,42 +50,42 @@ const RunEvents = ({ event, props }) => {
                 </Card>
 
                 {updateForm ? (
-                    <>
-                        <Modal
-                            show={modalIsOpen}
-                            header={name}
-                            onCancel={closeModal}
-                            content={"place-item-modal-content"}
-                            footerClass="place-item-modal-actions"
-                            footer={
-                                <form className="run-form">
-                                    <h1>Add run event form </h1>
 
-                                    <div >
-                                        <label htmlFor="name" > </label>
-                                        <input type="text" placeholder="Add Event Name" />
+                    <Modal
+                        show={modalIsOpen}
+                        header={name}
+                        onCancel={closeModal}
+                        content={"place-item-modal-content"}
+                        footerClass="place-item-modal-actions"
+                        footer={
+                            <form className="run-form">
+                                <h1>Add run event form </h1>
 
-                                    </div>
-                                    <div >
-                                        <label htmlFor="date" > </label>
-                                        <input type="text" placeholder={`Event Date`} />
+                                <div >
+                                    <label htmlFor="name" > </label>
+                                    <input type="text" placeholder="Add Event Name" onChange={(e) => setEventName(e.target.value)} />
 
-                                    </div>
-                                    <div >
-                                        <label htmlFor="distance" > </label>
-                                        <input type="text" placeholder="Add Event Total Distance" />
+                                </div>
+                                <div >
+                                    <label htmlFor="date" > </label>
+                                    <input type="text" placeholder={`Event Date`} onChange={(e) => setEventDate(e.target.value)} />
 
-                                    </div>
-                                    <div >
-                                        <button>Update Event</button>
+                                </div>
+                                <div >
+                                    <label htmlFor="distance" > </label>
+                                    <input type="text" placeholder="Add Event Total Distance" onChange={(e) => setEventDistance(e.target.value)} />
 
-                                    </div>
-                                </form>
-                            }
-                        >
+                                </div>
+                                <div >
+                                    <button>Update Event</button>
 
-                        </Modal>
-                    </>
+                                </div>
+                            </form>
+                        }
+                    >
+
+                    </Modal>
+
                 ) : (
                         <Modal
                             show={modalIsOpen}

@@ -1,4 +1,4 @@
-import { EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_CREATE_FAIL, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_DELETE_REQUEST } from "../constants/eventConstants.js"
+import { EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_CREATE_FAIL, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_DELETE_REQUEST, EVENT_UPDATE_REQUEST, EVENT_UPDATE_SUCCESS, EVENT_UPDATE_FAIL } from "../constants/eventConstants.js"
 
 export const eventCreateReducer = (state = {}, action) => {
     switch (action.type) {
@@ -45,6 +45,27 @@ export const getEventsReducer = (state = { events: [] }, action) => {
                 error: action.payload
             }
 
+        default:
+            return state
+    }
+}
+
+export const updateEventReducer = (state = { events: [] }, action) => {
+    switch (action.type) {
+        case EVENT_UPDATE_REQUEST:
+            return { loading: true }
+
+        case EVENT_UPDATE_SUCCESS:
+            return {
+                loading: false,
+                success: true,
+                eventInfo: action.payload
+            }
+        case EVENT_UPDATE_FAIL:
+            return {
+                loading: false,
+                error: action.payload
+            }
         default:
             return state
     }
