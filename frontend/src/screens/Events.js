@@ -19,6 +19,7 @@ const Events = () => {
     return (
         <>
             <h1 className="event-title">Let's check out the upcoming events</h1>
+
             <div className="all-events">
                 {
 

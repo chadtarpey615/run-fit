@@ -7,7 +7,7 @@ const router = express.Router();
 router.route("/").post(authProtect, saveEvent)
 router.get("/all-events", allEvents)
 router.get("/:id", deleteEvent)
-router.put("/:id", updateEvent)
+router.route("/:id").get(getEventById).patch(updateEvent)
 
 
 

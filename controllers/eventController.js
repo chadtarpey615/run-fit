@@ -58,19 +58,29 @@ const getEventById = asyncHandler(async (req, res) => {
 })
 
 const updateEvent = asyncHandler(async (req, res) => {
-    const eventId = req.body._id
+    const eventId = req.body.id
     console.log("event id line 62", eventId)
-    console.log(req.body)
-    const event = await Event.findById(eventId)
+    console.log("req.body::", req.body)
 
-    const updatedEvent = await event.save()
+    const { name, distance, date } = req.body
+    let event
+    try {
+        event = await Event.findById(eventId)
+        console.log("eventtttt:", event)
+    } catch (error) {
+        console.log(error)
+    }
 
-    res.json({
-        name: updatedEvent.name,
-        date: updatedEvent.date,
-        distance: updatedEvent.distance
-    })
-    // console.log("event response:", response)
+    event.name = name
+    event.date = date
+    event.distance = distance
+
+    try {
+        await event.save()
+    } catch (error) {
+        console.log(error)
+    }
+
 })
 
 

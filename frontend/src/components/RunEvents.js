@@ -36,15 +36,18 @@ const RunEvents = ({ event, props }) => {
         console.log(id)
     }
 
-    const updateSubmitHandler = (e, id) => {
+    const updateSubmitHandler = async (e, id) => {
         e.preventDefault()
-        console.log(id)
         dispatch(updateEvent({
             _id: id,
             name: eventName,
             date: eventDate,
             distance: eventDistance
         }))
+
+
+
+
     }
 
     return (
