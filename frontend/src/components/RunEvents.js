@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { removeEvent, getAllEvents } from "../actions/eventActions"
+import { removeEvent, getAllEvents, updateEvent } from "../actions/eventActions"
 
 import Card from "../components/Card"
 // import Modal from "react-modal"
@@ -36,6 +36,17 @@ const RunEvents = ({ event, props }) => {
         console.log(id)
     }
 
+    const updateSubmitHandler = (e, id) => {
+        e.preventDefault()
+        console.log(id)
+        dispatch(updateEvent({
+            _id: id,
+            name: eventName,
+            date: eventDate,
+            distance: eventDistance
+        }))
+    }
+
     return (
         <div >
             <section className="events">
@@ -52,6 +63,7 @@ const RunEvents = ({ event, props }) => {
                 {updateForm ? (
 
                     <Modal
+                        id={_id}
                         show={modalIsOpen}
                         header={name}
                         onCancel={closeModal}
@@ -77,7 +89,7 @@ const RunEvents = ({ event, props }) => {
 
                                 </div>
                                 <div >
-                                    <button>Update Event</button>
+                                    <button onClick={(e) => updateSubmitHandler(e, _id)}>Update Event</button>
 
                                 </div>
                             </form>

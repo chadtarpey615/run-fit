@@ -57,7 +57,8 @@ export const getAllEvents = (events) => async (dispatch) => {
 
 }
 
-export const updateEvent = () => async (dispatch, getState) => {
+export const updateEvent = (id) => async (dispatch, getState) => {
+    console.log("actions:", id)
     try {
         dispatch({
             type: EVENT_UPDATE_REQUEST
@@ -65,22 +66,21 @@ export const updateEvent = () => async (dispatch, getState) => {
 
         const { userLogin: { userInfo } } = getState()
 
-        const config = {
-            headers: {
-                "Content-type": "application/json",
-                Authorization: `Bearer ${userInfo.data.token}`
+        // const config = {
+        //     headers: {
+        //         "Content-type": "application/json",
+        //         Authorization: `Bearer ${userInfo.data.token}`
 
-            }
-        }
+        //     }
+        // }
 
-        const { data } = await axios.put(`/api/events/${id}`,
-            config
-        )
+        const response = await axios.put(`/api/events/${id}`, id)
+        console.log(response)
 
 
         dispatch({
             type: EVENT_UPDATE_SUCCESS,
-            payload: data
+            payload: response
         })
 
 

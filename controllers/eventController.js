@@ -57,6 +57,22 @@ const getEventById = asyncHandler(async (req, res) => {
 
 })
 
+const updateEvent = asyncHandler(async (req, res) => {
+    const eventId = req.body._id
+    console.log("event id line 62", eventId)
+    console.log(req.body)
+    const event = await Event.findById(eventId)
+
+    const updatedEvent = await event.save()
+
+    res.json({
+        name: updatedEvent.name,
+        date: updatedEvent.date,
+        distance: updatedEvent.distance
+    })
+    // console.log("event response:", response)
+})
+
 
 
 
@@ -91,4 +107,4 @@ const deleteEvent = asyncHandler(async (req, res) => {
     res.status(200).json({ message: "Deleted place" })
 })
 
-export { saveEvent, allEvents, deleteEvent, getEventById }
+export { saveEvent, allEvents, deleteEvent, getEventById, updateEvent }
