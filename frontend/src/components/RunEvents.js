@@ -16,12 +16,15 @@ const RunEvents = ({ event, props }) => {
     const [eventDistance, setEventDistance] = useState("")
 
     const dispatch = useDispatch()
+    const eventList = useSelector(state => state.allEvents)
+
 
     const openModal = () => { setModalOpen(true) }
 
     const openFormModal = () => {
         setUpdateForm(true)
         openModal()
+        console.log(eventList)
     }
 
     const closeModal = () => {

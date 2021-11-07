@@ -13,7 +13,8 @@ const saveEvent = asyncHandler(async (req, res) => {
         user: req.user._id,
         name,
         date,
-        distance
+        distance,
+        creator: req.user._id
     })
 
     const { _id } = req.user

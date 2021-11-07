@@ -20,6 +20,13 @@ const eventSchema = mongoose.Schema({
     distance: {
         type: Number,
         required: true
+    },
+
+    creator: {
+        type:
+            mongoose.Types.ObjectId,
+        required: true,
+        ref: "User"
     }
 })
 
