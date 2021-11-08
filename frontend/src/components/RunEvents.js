@@ -8,7 +8,7 @@ import Modal from "../components/Modal"
 
 
 const RunEvents = ({ event, props }) => {
-    const { name, date, distance, _id } = event
+    const { name, date, distance, _id, creator } = event
     const [updateForm, setUpdateForm] = useState(false)
     const [modalIsOpen, setModalOpen] = useState(false)
     const [eventName, setEventName] = useState("")
@@ -18,6 +18,11 @@ const RunEvents = ({ event, props }) => {
     const dispatch = useDispatch()
     const eventList = useSelector(state => state.allEvents)
 
+
+
+    useEffect(() => {
+        console.log(creator)
+    })
 
     const openModal = () => { setModalOpen(true) }
 
@@ -61,6 +66,8 @@ const RunEvents = ({ event, props }) => {
                     <h1>{name}</h1>
                     <h4>{date}</h4>
                     <h4>{distance}</h4>
+                    <h4>{creator}</h4>
+                    <h4></h4>
                     <button onClick={openModal}>Check out event</button>
                     <button onClick={() => deleteEvent(_id)}>Remove event</button>
                     <button onClick={openFormModal}>Update Event</button>
@@ -117,6 +124,7 @@ const RunEvents = ({ event, props }) => {
                                     <i class="fa fa-5x fa-road" aria-hidden="true"></i>
 
                                     <h1>{name}</h1>
+                                    <h2>Created by: {creator}</h2>
                                     <h2>{date}</h2>
                                     <h4>{distance} miles</h4>
                                 </div>}

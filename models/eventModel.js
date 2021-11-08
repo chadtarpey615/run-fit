@@ -22,11 +22,15 @@ const eventSchema = mongoose.Schema({
         required: true
     },
 
+    // creator: {
+    //     type:
+    //         mongoose.Types.ObjectId,
+    //     required: true,
+    //     ref: "User"
+    // }
+
     creator: {
-        type:
-            mongoose.Types.ObjectId,
-        required: true,
-        ref: "User"
+        type: String, required: true
     }
 })
 

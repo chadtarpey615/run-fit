@@ -15,7 +15,18 @@ const CalendarScreen = () => {
     const [eventName, setEventName] = useState("")
     const [eventDate, setEventDate] = useState("")
     const [eventDistance, setEventDistance] = useState("")
+    const [user, setUser] = useState(null)
 
+
+
+
+    const activeUser = useSelector(state => state.userLogin)
+    const { userInfo } = activeUser
+
+
+    useEffect(() => {
+        console.log(userInfo.data.name)
+    })
 
     const enterEventHandler = (e) => {
         e.preventDefault()
@@ -23,7 +34,8 @@ const CalendarScreen = () => {
         dispatch(createEvent({
             name: eventName,
             date: eventDate.toLocaleDateString(),
-            distance: eventDistance
+            distance: eventDistance,
+            creator: userInfo.data.name
         }))
     }
 
