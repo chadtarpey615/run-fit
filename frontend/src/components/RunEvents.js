@@ -120,13 +120,16 @@ const RunEvents = ({ event, deleteEvent }) => {
                         footerClass="place-item-modal-actions"
                         footer={
                             <div>
-                                <i class="fa fa-5x fa-road" aria-hidden="true"></i>
+                                <i className="fa fa-5x fa-road" aria-hidden="true"></i>
 
                                 <h1>{name}</h1>
                                 <h2>Created by: {creator}</h2>
                                 <h2>{date}</h2>
                                 <h4>{distance} miles</h4>
+                                <button><i className="fa fa-2x   fa-thumbs-up"></i></button>
+                                <button><i className="fa fa-2x  fa-thumbs-down"></i></button>
                             </div>}
+
                     >
                     </Modal>
                 )}
