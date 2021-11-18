@@ -118,4 +118,17 @@ const deleteEvent = asyncHandler(async (req, res) => {
     res.status(200).json({ message: "Deleted place" })
 })
 
+
+const addComment = asyncHandler(async (req, res) => {
+    const eventId = req.params.id
+    let event
+    let comment
+
+    try {
+
+    } catch (error) {
+        console.log(error)
+    }
+})
+
 export { saveEvent, allEvents, deleteEvent, getEventById, updateEvent }

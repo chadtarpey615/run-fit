@@ -1,5 +1,18 @@
 import mongoose from "mongoose"
 
+
+const commentSchema = mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
+    comment: {
+        type: String,
+        required: true
+    }
+})
+
+
 const eventSchema = mongoose.Schema({
     user: {
         type: mongoose.Schema.Types.ObjectId,
@@ -31,7 +44,9 @@ const eventSchema = mongoose.Schema({
 
     creator: {
         type: String, required: true
-    }
+    },
+
+    comments: [commentSchema]
 })
 
 const Event = mongoose.model("Event", eventSchema)
