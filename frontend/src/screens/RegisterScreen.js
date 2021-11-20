@@ -23,9 +23,14 @@ const RegisterScreen = ({ history }) => {
         }
     }
     return (
-        <div>
+        <div className="register-container">
+            <div className="intro-title">
+                <h2>Create Account</h2>
+                <p>
+                    Have an account, click here to <Link to="/">Login.</Link>
+                </p>
+            </div>
             <form className="register-form" onSubmit={registerUser}>
-                <h1>Please Sign up </h1>
                 <div className="email-input">
                     <label htmlFor="email">
                         <input type="name" name="name" placeholder="Please enter your name" value={name} onChange={(e) => setName(e.target.value)} />
@@ -48,7 +53,6 @@ const RegisterScreen = ({ history }) => {
                 </div>
                 <div className="submit-btn">
                     <button type="submit">Register</button>
-                    <Link to="/">Have an account, click here to login.</Link>
                 </div>
             </form>
         </div>
