@@ -1,4 +1,4 @@
-.login-container {
+.register-container {
   background: rgb(15, 15, 15);
   width: 350px;
   height: 450px;
@@ -10,32 +10,32 @@
   padding: 2em;
 }
 
-.login-heading {
+.register-heading {
   font-size: 2em;
   margin-bottom: 0.5em;
 }
 
-.login-box {
+.register-box {
   margin: 0.2em 0;
 }
 
-.login-container .login-box p {
+.register-container .register-box p {
   color: rgba(255, 255, 255, 0.701);
 }
 
-.login-container .login-box div {
+.register-container .register-box div {
   position: relative;
   width: 100%;
   height: 40px;
   margin: 0.5em 0;
 }
 
-.login-container .login-box input {
+.register-container .register-box input {
   position: absolute;
   width: 100%;
   height: 100%;
   background: rgb(19, 19, 19);
-  color: white;
+  color: #fff;
   border: none;
   outline: none;
   padding-left: 0.8em;
@@ -43,11 +43,11 @@
   transition: all 0.4s;
 }
 
-.login-container .login-box input:focus::placeholder {
-  color: #fff;
+.register-container .register-box input:focus::placeholder {
+  color: white;
 }
 
-.login-container .login-box div::before {
+.register-container .register-box div::before {
   content: "";
   position: absolute;
   top: 50%;
@@ -59,7 +59,7 @@
   background: linear-gradient(to right, #ff416c, #ff4b2b);
 }
 
-.login-btn {
+.register-btn {
   width: 102%;
   height: 40px;
   border: none;
@@ -72,7 +72,7 @@
   transition: all 0.4s;
 }
 
-.login-btn:hover {
+.register-btn:hover {
   transform: translate(-1%, 5%);
   box-shadow: 0 0 10px #ff416d65;
 }
@@ -84,6 +84,6 @@
   color: rgba(255, 255, 255, 0.623);
 }
 
-.login-link {
+.register-link {
   color: rgba(255, 255, 255, 0.911);
 }
