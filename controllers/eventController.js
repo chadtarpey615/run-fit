@@ -125,7 +125,7 @@ const addComment = asyncHandler(async (req, res) => {
     let comment
 
     try {
-
+        event = await Event.findById(eventId).populate("comments")
     } catch (error) {
         console.log(error)
     }

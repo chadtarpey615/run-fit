@@ -65,15 +65,15 @@ body {
 .intro-title p Link {
   color: #121212;
 }
-.login-form {
+/* .login-form {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* border: 2px solid green; */
-}
+  border: 2px solid green;
+} */
 
-.email-input input {
+/* .email-input input {
   width: 24rem;
   height: 2rem;
   margin-bottom: 2rem;
@@ -82,7 +82,7 @@ body {
 .password-input input {
   width: 24rem;
   height: 2rem;
-}
+} */
 
 .submit-btn button {
   border: none;
