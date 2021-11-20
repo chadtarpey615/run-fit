@@ -47,6 +47,9 @@
   color: #fff;
 }
 
+/* .login-container .login-box input:focus::placeholder {
+  color: #fff;
+} */
 .login-container .login-box div::before {
   content: "";
   position: absolute;
