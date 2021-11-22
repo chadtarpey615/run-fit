@@ -5,8 +5,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { createEvent } from "../actions/eventActions"
 import { getAllEvents } from "../actions/eventActions"
 import 'react-day-picker/lib/style.css';
-import Tile from "../components/Tile"
-import moment from 'moment'
+import "../style/calendarScreen.css"
 
 const CalendarScreen = () => {
     const dispatch = useDispatch()
@@ -51,7 +50,7 @@ const CalendarScreen = () => {
 
     return (
         <>
-
+            <h1>Run Fit</h1>
             <DayPicker onDayClick={(e) => setSelectDay(e)}
 
             />

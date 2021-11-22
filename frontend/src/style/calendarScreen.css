@@ -1,0 +1,51 @@
+.DayPicker-Month {
+  height: 60vh;
+  width: 40vw;
+  margin: 20px 30px;
+}
+
+.DayPicker {
+  display: flex;
+  justify-content: center;
+  margin: 20px 60px;
+}
+
+.DayPicker-Day {
+  border: 2px solid #333;
+}
+
+.run-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.run-form input {
+  margin-top: 12px;
+  width: 20vw;
+  height: 5vh;
+  border-radius: 10px;
+}
+.run-form button {
+  margin-top: 12px;
+  width: 20vw;
+  height: 5vh;
+  border-radius: 10px;
+}
+
+.clear-btn {
+  margin-right: 4px;
+}
+.clear-btn,
+.show-btn {
+  width: 8rem;
+  height: 2rem;
+  border-radius: 12px;
+}
+
+.event-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
