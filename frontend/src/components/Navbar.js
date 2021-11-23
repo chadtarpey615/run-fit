@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { logout } from "../actions/userActions"
-
+import logo from "../style/images.jpeg"
 import "../style/navbar.css"
 
 const Navbar = () => {
@@ -22,17 +22,35 @@ const Navbar = () => {
             <nav className="navbar">
 
                 {userInfo ? (
-                    <div className="nav-links">
-                        <li>Welcome {userInfo.data.name}</li>
+                    <div className="navbar-container">
+                        <div className="navbar-logo">
+                            <Link to="/">
+                                <img src={logo} alt="" />
+                            </Link>
+                        </div>
 
-                        <ul className="nav-menu">
+                        <ul className="navbar-left">
+                            <li>Welcome {userInfo.data.name}</li>
                             <li><Link to="/calendar">Home</Link></li>
+                        </ul>
+
+
+                        <ul className="navbar-right">
+
                             <li onClick={logoutHandler}><Link to="/login">Logout</Link></li>
                         </ul>
                     </div>
                 ) :
-                    <div className="nav-links">
-                        <ul className="nav-menu">
+                    <div className="navbar-container">
+                        <div className="navbar-logo">
+                            <Link to="/">
+                                <img src={logo} alt="" />
+                            </Link>
+                        </div>
+                        <ul className="navbar-left">
+                            <li><Link to="/calendar">Home</Link></li>
+                        </ul>
+                        <ul className="navbar-right">
                             <li><Link to="/login">Login</Link></li>
                             <li><Link to="/register">Sign Up</Link></li>
                         </ul>
