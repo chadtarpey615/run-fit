@@ -23,19 +23,26 @@ const CalendarScreen = () => {
     const { userInfo } = activeUser
 
 
-    useEffect(() => {
-        console.log(userInfo.data.name)
-    })
+
 
     const enterEventHandler = (e) => {
         e.preventDefault()
 
         dispatch(createEvent({
             name: eventName,
-            date: eventDate.toLocaleDateString(),
+            date: eventDate,
             distance: eventDistance,
             creator: userInfo.data.name
         }))
+    }
+
+    const clearInputs = (e) => {
+        e.preventDefault()
+
+        setEventDate("")
+        setEventDistance("");
+        setEventName("")
+
     }
 
     // const eventList = useSelector(state => state.allEvents)
@@ -49,16 +56,21 @@ const CalendarScreen = () => {
     // }, [dispatch])
 
     return (
-        <>
-            <h1>Run Fit</h1>
-            <DayPicker onDayClick={(e) => setSelectDay(e)}
+        <section className="calendar-container">
+            <div className="calender-left">
+                <h1>Run Fit</h1>
 
-            />
-            <div className="event-btn">
-                <button className="clear-btn" onClick={(e) => setSelectDay(null)}>Clear Input</button>
-                <Link to="/all-events"><button className="show-btn">See all Events</button></Link>
+                <DayPicker onDayClick={(e) => setSelectDay(e)}
+
+                />
+                <div className="event-btn">
+                    <button className="clear-btn" onClick={clearInputs}>Clear Input</button>
+                    <Link to="/all-events"><button className="show-btn">See all Events</button></Link>
+                </div>
             </div>
-            {selectDay ? (
+
+
+            <div className="calendar-right">
                 <form className="run-form" onSubmit={enterEventHandler}>
                     <h1>Add run event form </h1>
 
@@ -69,7 +81,7 @@ const CalendarScreen = () => {
                     </div>
                     <div >
                         <label htmlFor="date" > </label>
-                        <input type="text" placeholder={`Event Date ${selectDay}`} onMouseEnter={(e) => setEventDate(selectDay)} />
+                        <input type="text" placeholder={`date: ${selectDay}`} onMouseEnter={(e) => setEventDate(selectDay)} />
 
                     </div>
                     <div >
@@ -82,8 +94,10 @@ const CalendarScreen = () => {
 
                     </div>
                 </form>
-            ) : <></>}
-        </>
+            </div>
+
+
+        </section>
     )
 }
 

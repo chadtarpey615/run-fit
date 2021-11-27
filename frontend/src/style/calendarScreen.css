@@ -1,3 +1,15 @@
+.calendar-container {
+  display: grid;
+  background-color: red;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.calendar-right {
+  height: 70vh;
+  background-color: blue;
+  margin: 70px auto;
+}
+
 .DayPicker-Month {
   height: 60vh;
   width: 40vw;
@@ -5,9 +17,9 @@
 }
 
 .DayPicker {
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  margin: 20px 60px;
+  margin: 20px 60px; */
   /* background: url("./wave.svg"); */
 }
 
@@ -15,16 +27,13 @@
   border: 2px solid #333;
 }
 
-.run-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
+/* .run-form {
+  margin: 50px auto;
+} */
 
 .run-form input {
-  margin-top: 12px;
-  width: 20vw;
+  margin: 22px auto;
+  width: 30vw;
   height: 5vh;
   border-radius: 10px;
 }

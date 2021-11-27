@@ -52,7 +52,7 @@ const Events = () => {
         <>
             <h1 className="event-title">Let's check out the upcoming events</h1>
             {isLoading &&
-                <div className="all-events">
+                <div className="card-container">
                     {
                         events.map(event => (<RunEvents event={event} deleteEvent={deleteEvent} />
                         ))

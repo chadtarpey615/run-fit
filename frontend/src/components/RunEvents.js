@@ -60,17 +60,25 @@ const RunEvents = ({ event, deleteEvent }) => {
 
     return (
         <>
+
             <Card>
+
                 <i className="fa fa-5x fa-road" aria-hidden="true"></i>
-                <h1>{name}</h1>
-                <h4>{date}</h4>
-                <h4>{distance}</h4>
-                <h4>{creator}</h4>
-                <h4></h4>
-                <button onClick={openModal}>Check out event</button>
-                <button onClick={(e) => deleteEvent(e, _id)}>Remove event</button>
-                <button onClick={openFormModal}>Update Event</button>
+                <h1>Event Title <span>{name}</span></h1>
+                <h4>Date: <span>{date}</span></h4>
+                <h4>Distance: <span>{distance}</span></h4>
+                <h4>Created by: <span>{creator}</span></h4>
+                <span className="horizontal-line"></span>
+                <div className="card-btn">
+                    <button onClick={openModal}>Check out event</button>
+                    <button onClick={(e) => deleteEvent(e, _id)}>Remove event</button>
+                    <button onClick={openFormModal}>Update Event</button>
+                </div>
+
+
+
             </Card>
+
 
             {updateForm ? (
 
