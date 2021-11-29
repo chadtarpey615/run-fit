@@ -18,11 +18,13 @@ const RunEvents = ({ event, deleteEvent }) => {
 
     const dispatch = useDispatch()
     const eventList = useSelector(state => state.allEvents)
+    const { events } = eventList
+    // const { comments } = events
 
 
 
     useEffect(() => {
-        console.log(creator)
+        console.log(events)
     })
 
     const openModal = () => { setModalOpen(true) }
@@ -63,9 +65,10 @@ const RunEvents = ({ event, deleteEvent }) => {
 
     }
 
-    const addEventComment = (e) => {
+    const addEventComment = (e, id) => {
         e.preventDefault()
         dispatch(createComment({
+            _id: id,
             name: creator,
             comment: comment
         }))
@@ -80,10 +83,11 @@ const RunEvents = ({ event, deleteEvent }) => {
                 <h4>Date: <span>{date}</span></h4>
                 <h4>Distance: <span>{distance}</span></h4>
                 <h4>Created by: <span>{creator}</span></h4>
-                <span className="horizontal-line"></span>
                 <div className="comments">
-                    {/* <input type="text" /> */}
+                    <p>comment: {events[0].comments[0].name}  {events[0].comments[0].comment}</p>
                 </div>
+                <span className="horizontal-line"></span>
+
                 <div className="card-btn">
                     <button onClick={openModal}>Check out event</button>
                     <button onClick={(e) => deleteEvent(e, _id)}>Remove event</button>
@@ -155,7 +159,7 @@ const RunEvents = ({ event, deleteEvent }) => {
                                     <form className="comments">
                                         <label htmlFor="Add Comment">Add Comment</label>
                                         <input type="text" placeholder="Add Comment" onChange={(e) => setComment(e.target.value)} />
-                                        <button onClick={addEventComment}>enter</button>
+                                        <button onClick={(e) => addEventComment(e, _id)}>enter</button>
 
                                     </form>
                                 </div>}

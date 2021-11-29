@@ -120,18 +120,21 @@ const deleteEvent = asyncHandler(async (req, res) => {
 
 
 const addComment = asyncHandler(async (req, res) => {
-    const eventId = req.params.id
+    const eventId = req.body.id
     let event
     let comment
+    let name
 
     /// when i come back need to get the event id through params
 
     // console.log("request ::::::: ", req.body.comment)
-    console.log("paramsssssssss", req.params)
 
     try {
         event = await Event.findById(eventId).populate("comments")
-        comment = req.body.comment
+        name = req.body.name
+        comment = req.body
+        console.log("event::::::", event)
+
         const sess = await Mongoose.startSession()
         sess.startTransaction()
         await event.save({ session: sess })

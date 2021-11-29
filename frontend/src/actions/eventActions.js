@@ -112,7 +112,8 @@ export const removeEvent = (id) => async (dispatch, getState) => {
 }
 
 
-export const createComment = (comment) => async (dispatch, getState) => {
+export const createComment = (data) => async (dispatch, getState) => {
+    console.log(data)
     try {
         dispatch({
             type: EVENT_COMMENT_REQUEST
@@ -128,12 +129,21 @@ export const createComment = (comment) => async (dispatch, getState) => {
         //     }
         // }
 
-        const { data } = await axios.post(`/api/events/:_id`, comment)
-        console.log(comment)
+        const comment = {
+            id: data._id,
+            name: data.name,
+            comment: data.comment,
+
+        }
+
+
+
+        const { response } = await axios.post(`/api/events/${data._id}`, comment)
+        console.log(response)
 
         dispatch({
             type: EVENT_COMMENT_SUCCESS,
-            payload: data
+            payload: response
         })
 
     } catch (error) {
