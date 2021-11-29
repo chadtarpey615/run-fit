@@ -124,11 +124,22 @@ const addComment = asyncHandler(async (req, res) => {
     let event
     let comment
 
+    console.log(req)
+
     try {
         event = await Event.findById(eventId).populate("comments")
+        comment = req.user.body
+
+        const sess = await Mongoose.startSession()
+        sess.startTransaction()
+        await event.save({ session: sess })
+        event.comments.push(comment)
+        await event.save({ session: sess })
+        await sess.commitTransaction()
+
     } catch (error) {
         console.log(error)
     }
 })
 
-export { saveEvent, allEvents, deleteEvent, getEventById, updateEvent }
+export { saveEvent, allEvents, deleteEvent, getEventById, updateEvent, addComment }

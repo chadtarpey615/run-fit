@@ -30,7 +30,7 @@ const Navbar = () => {
                         </div>
 
                         <ul className="navbar-left">
-                            <li>Welcome {userInfo.data.name}</li>
+                            <li>Welcome {userInfo.data.name || "User"}</li>
                             <li><Link to="/calendar">Home</Link></li>
                         </ul>
 
