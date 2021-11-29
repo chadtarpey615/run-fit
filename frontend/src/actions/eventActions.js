@@ -1,4 +1,4 @@
-import { EVENT_CREATE_FAIL, EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_DELETE_REQUEST, EVENT_UPDATE_REQUEST, EVENT_UPDATE_FAIL, EVENT_UPDATE_SUCCESS } from "../constants/eventConstants"
+import { EVENT_CREATE_FAIL, EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_DELETE_REQUEST, EVENT_UPDATE_REQUEST, EVENT_UPDATE_FAIL, EVENT_UPDATE_SUCCESS, EVENT_COMMENT_REQUEST, EVENT_COMMENT_FAIL, EVENT_COMMENT_SUCCESS } from "../constants/eventConstants"
 import axios from "axios"
 
 export const createEvent = (event) => async (dispatch, getState) => {
@@ -109,4 +109,37 @@ export const removeEvent = (id) => async (dispatch, getState) => {
         console.log(error)
     }
 
+}
+
+
+export const createComment = (comment) => async (dispatch, getState) => {
+    try {
+        dispatch({
+            type: EVENT_COMMENT_REQUEST
+        })
+
+        const { userLogin: { userInfo } } = getState()
+        // const {userInfo.token}
+
+        // const config = {
+        //     headers: {
+        //         "Content-Type": "application/json",
+        //         Authorization: `Bearer ${userInfo.data.token}`
+        //     }
+        // }
+
+        const { data } = await axios.post(`/api/events/:_id`, comment)
+        console.log(comment)
+
+        dispatch({
+            type: EVENT_COMMENT_SUCCESS,
+            payload: data
+        })
+
+    } catch (error) {
+        dispatch({
+            type: EVENT_COMMENT_FAIL,
+            payload: error.response && error.response.data.message ? error.response.data.message : error.message,
+        })
+    }
 }

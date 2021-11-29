@@ -1,16 +1,16 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from "react-redux"
-import { removeEvent, getAllEvents, updateEvent } from "../actions/eventActions"
+import { removeEvent, getAllEvents, updateEvent, createComment } from "../actions/eventActions"
 
 import Card from "../components/Card"
-// import Modal from "react-modal"
 import Modal from "../components/Modal"
+import { ENTERED } from 'react-transition-group/Transition'
 
 
 const RunEvents = ({ event, deleteEvent }) => {
     const { name, date, distance, _id, creator } = event
     const [updateForm, setUpdateForm] = useState(false)
-    const [addComment, setAddComment] = useState(false)
+    const [comment, setComment] = useState(null)
     const [modalIsOpen, setModalOpen] = useState(false)
     const [eventName, setEventName] = useState("")
     const [eventDate, setEventDate] = useState("")
@@ -33,15 +33,11 @@ const RunEvents = ({ event, deleteEvent }) => {
         console.log(eventList)
     }
 
-    const openCommentModal = () => {
-        setAddComment(true)
-        openModal()
-    }
+
 
     const closeModal = () => {
         setModalOpen(false)
         setUpdateForm(false)
-        setAddComment(false)
 
     }
 
@@ -65,6 +61,14 @@ const RunEvents = ({ event, deleteEvent }) => {
 
 
 
+    }
+
+    const addEventComment = (e) => {
+        e.preventDefault()
+        dispatch(createComment({
+            name: creator,
+            comment: comment
+        }))
     }
 
     return (
@@ -148,10 +152,12 @@ const RunEvents = ({ event, deleteEvent }) => {
                                     <h4>{distance} miles</h4>
                                     <button><i className="fa fa-2x   fa-thumbs-up"></i></button>
                                     <button><i className="fa fa-2x  fa-thumbs-down"></i></button>
-                                    <div className="comments">
-                                        <label htmlFor="Add Comment">Add Commnet</label>
-                                        <input type="text" />
-                                    </div>
+                                    <form className="comments">
+                                        <label htmlFor="Add Comment">Add Comment</label>
+                                        <input type="text" placeholder="Add Comment" onChange={(e) => setComment(e.target.value)} />
+                                        <button onClick={addEventComment}>enter</button>
+
+                                    </form>
                                 </div>}
 
                         >

@@ -8,7 +8,7 @@ router.route("/").post(authProtect, saveEvent)
 router.get("/all-events", allEvents)
 router.get("/:id", deleteEvent)
 router.route("/:id").get(getEventById).patch(updateEvent)
-router.post("/:id", addComment)
+router.post("/:_id", addComment)
 
 
 

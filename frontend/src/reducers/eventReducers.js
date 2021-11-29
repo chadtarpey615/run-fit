@@ -1,4 +1,4 @@
-import { EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_CREATE_FAIL, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_DELETE_REQUEST, EVENT_UPDATE_REQUEST, EVENT_UPDATE_SUCCESS, EVENT_UPDATE_FAIL } from "../constants/eventConstants.js"
+import { EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_CREATE_FAIL, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_DELETE_REQUEST, EVENT_UPDATE_REQUEST, EVENT_UPDATE_SUCCESS, EVENT_UPDATE_FAIL, EVENT_COMMENT_REQUEST, EVENT_COMMENT_FAIL, EVENT_COMMENT_SUCCESS } from "../constants/eventConstants.js"
 
 export const eventCreateReducer = (state = {}, action) => {
     switch (action.type) {
@@ -86,6 +86,35 @@ export const removeEventReducer = (state = { events: [] }, action) => {
                 events: state.events.filter(x => x.events !== action.payload)
 
 
+            }
+        default:
+            return state
+    }
+
+}
+
+export const addEventCommentReducer = (state = { comments: [] }, action) => {
+    switch (action.type) {
+
+        case EVENT_COMMENT_REQUEST:
+            return {
+                loading: true,
+                comments: []
+            }
+
+        case EVENT_COMMENT_SUCCESS:
+            return {
+                loading: false,
+                success: true,
+                commentInfo: action.payload
+
+
+            }
+
+        case EVENT_COMMENT_FAIL:
+            return {
+                loading: false,
+                error: action.payload
             }
         default:
             return state
