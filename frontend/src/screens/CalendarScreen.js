@@ -25,10 +25,10 @@ const CalendarScreen = () => {
 
 
 
-    const enterEventHandler = (e) => {
+    const enterEventHandler = async (e) => {
         e.preventDefault()
 
-        dispatch(createEvent({
+        await dispatch(createEvent({
             name: eventName,
             date: eventDate,
             distance: eventDistance,

@@ -1,7 +1,8 @@
-import { EVENT_CREATE_FAIL, EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_DELETE_REQUEST, EVENT_UPDATE_REQUEST, EVENT_UPDATE_FAIL, EVENT_UPDATE_SUCCESS, EVENT_COMMENT_REQUEST, EVENT_COMMENT_FAIL, EVENT_COMMENT_SUCCESS } from "../constants/eventConstants"
+import { EVENT_CREATE_FAIL, EVENT_CREATE_REQUEST, EVENT_CREATE_SUCCESS, EVENT_GET_REQUEST, EVENT_GET_FAIL, EVENT_GET_SUCCESS, EVENT_DELETE_SUCCESS, EVENT_DELETE_REQUEST, EVENT_UPDATE_REQUEST, EVENT_UPDATE_SUCCESS, EVENT_UPDATE_FAIL, EVENT_COMMENT_REQUEST, EVENT_COMMENT_FAIL, EVENT_COMMENT_SUCCESS } from "../constants/eventConstants"
 import axios from "axios"
 
 export const createEvent = (event) => async (dispatch, getState) => {
+    console.log(event)
     try {
         dispatch({
             type: EVENT_CREATE_REQUEST
@@ -70,7 +71,7 @@ export const updateEvent = (data) => async (dispatch, getState) => {
             date: data.date,
             distance: data.distance
         }
-        const response = await axios.patch(`/api/events/${data._id}`, updatedEvent)
+        const { response } = await axios.patch(`/api/events/all-events/${data._id}`, updatedEvent)
         console.log(response)
 
 
@@ -119,15 +120,8 @@ export const createComment = (data) => async (dispatch, getState) => {
             type: EVENT_COMMENT_REQUEST
         })
 
-        const { userLogin: { userInfo } } = getState()
-        // const {userInfo.token}
+        // const { userLogin: { userInfo } } = getState()
 
-        // const config = {
-        //     headers: {
-        //         "Content-Type": "application/json",
-        //         Authorization: `Bearer ${userInfo.data.token}`
-        //     }
-        // }
 
         const comment = {
             id: data._id,

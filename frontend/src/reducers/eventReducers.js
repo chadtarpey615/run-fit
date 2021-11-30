@@ -4,6 +4,7 @@ export const eventCreateReducer = (state = {}, action) => {
     switch (action.type) {
         case EVENT_CREATE_REQUEST:
             return {
+                // ...state,
                 loading: true
             }
 
@@ -57,9 +58,8 @@ export const updateEventReducer = (state = { events: [] }, action) => {
 
         case EVENT_UPDATE_SUCCESS:
             return {
-                loading: false,
                 success: true,
-                eventInfo: action.payload
+                events: action.payload
             }
         case EVENT_UPDATE_FAIL:
             return {
@@ -104,8 +104,9 @@ export const addEventCommentReducer = (state = { comments: [] }, action) => {
 
         case EVENT_COMMENT_SUCCESS:
             return {
+                ...state,
                 loading: false,
-                success: true,
+                // success: true,
                 commentInfo: action.payload
 
 

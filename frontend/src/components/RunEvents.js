@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import { useHistory } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { removeEvent, getAllEvents, updateEvent, createComment } from "../actions/eventActions"
 
 import Card from "../components/Card"
 import Modal from "../components/Modal"
-import { ENTERED } from 'react-transition-group/Transition'
 
 
 const RunEvents = ({ event, deleteEvent }) => {
@@ -19,12 +19,13 @@ const RunEvents = ({ event, deleteEvent }) => {
     const dispatch = useDispatch()
     const eventList = useSelector(state => state.allEvents)
     const { events } = eventList
-    // const { comments } = events
+    const { comments } = events
 
+    const history = useHistory()
 
 
     useEffect(() => {
-        console.log(events)
+        // console.log(events)
     })
 
     const openModal = () => { setModalOpen(true) }
@@ -50,16 +51,20 @@ const RunEvents = ({ event, deleteEvent }) => {
     // }
 
     const updateSubmitHandler = async (e, id) => {
-
-        e.preventDefault()
+        closeModal()
         await dispatch(updateEvent({
             _id: id,
             name: eventName,
             date: eventDate,
             distance: eventDistance
         }))
+        history.push("/")
+        // dispatch(getAllEvents())
 
-        await dispatch(getAllEvents())
+        e.preventDefault()
+
+
+
 
 
 
@@ -84,7 +89,9 @@ const RunEvents = ({ event, deleteEvent }) => {
                 <h4>Distance: <span>{distance}</span></h4>
                 <h4>Created by: <span>{creator}</span></h4>
                 <div className="comments">
-                    <p>comment: {events[0].comments[0].name}  {events[0].comments[0].comment}</p>
+
+                    {/* <p>{message}</p> */}
+
                 </div>
                 <span className="horizontal-line"></span>
 
