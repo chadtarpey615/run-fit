@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { BrowserRouter as Router, Route } from "react-router-dom"
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import LoginScreen from "./screens/LoginScreen"
 import RegisterScreen from "./screens/RegisterScreen"
 import HomeScreen from "./screens/HomeScreen"
@@ -15,11 +15,14 @@ function App() {
     <Router>
       <Navbar />
       <div className="App">
-        <Route path="/login" component={LoginScreen} />
-        <Route path="/register" component={RegisterScreen} />
-        <Route path="/calendar" component={CalendarScreen} />
-        <Route path="/all-events" component={Events} />
-        <Route path="/" component={HomeScreen} exact />
+        <Switch>
+          <Route path="/login" component={LoginScreen} />
+          <Route path="/register" component={RegisterScreen} />
+          <Route path="/calendar" component={CalendarScreen} />
+          <Route path="/all-events" component={Events} />
+          <Route path="/" component={HomeScreen} exact />
+        </Switch>
+
       </div>
     </Router>
 
