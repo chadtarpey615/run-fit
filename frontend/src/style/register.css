@@ -4,10 +4,12 @@
   height: 450px;
   border-radius: 20px;
   display: flex;
+  align-self: center;
   justify-content: center;
   flex-direction: column;
   color: #fff;
   padding: 2em;
+  margin: 60px auto;
 }
 
 .register-heading {
@@ -56,7 +58,7 @@
   width: 102%;
   height: 105%;
   border-radius: 10px;
-  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  background: linear-gradient(to right, #072f5f, #1261a0);
 }
 
 .register-btn {
@@ -68,7 +70,7 @@
   transform: translate(-1%);
   cursor: pointer;
   color: #fff;
-  background: linear-gradient(to right, #ff416c, #ff4b2b);
+  background: linear-gradient(to right, #072f5f, #1261a0);
   transition: all 0.4s;
 }
 
