@@ -7,7 +7,7 @@ import logo from "../style/download.jpeg"
 
 const HomeScreen = () => {
     return (
-        <>
+        <div className="main">
             <div className="main-heading">
                 <header className="heading">
                     Welcome to Run-Fit
@@ -26,7 +26,7 @@ const HomeScreen = () => {
                 <Link to="/login"><button>LogIn</button></Link>
                 <Link to="/register" ><button>SignUp</button></Link>
             </div>
-        </>
+        </div>
     )
 }
 

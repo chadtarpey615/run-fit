@@ -48,7 +48,7 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <ul className="navbar-left">
-                            <li><Link className="link" to="/calendar">Home</Link></li>
+                            <li><Link className="link" to="/">Home</Link></li>
                         </ul>
                         <ul className="navbar-right">
                             <li><Link className="link" to="/login">Login</Link></li>

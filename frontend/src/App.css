@@ -13,18 +13,6 @@
   /* align-items: center; */
 }
 
-.main-btn button {
-  padding: 20px 20px;
-  margin: 5px 15px;
-  width: 22rem;
-  height: 6rem;
-  border-radius: 6rem;
-  background-color: blue;
-  color: white;
-  font-weight: 300;
-  font-size: larger;
-}
-
 .blocks {
   margin-top: 2rem;
   box-sizing: border-box;

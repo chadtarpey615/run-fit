@@ -26,7 +26,6 @@ const CalendarScreen = () => {
 
 
     const enterEventHandler = async (e) => {
-        e.preventDefault()
 
         await dispatch(createEvent({
             name: eventName,
@@ -34,14 +33,21 @@ const CalendarScreen = () => {
             distance: eventDistance,
             creator: userInfo.data.name
         }))
-    }
-
-    const clearInputs = (e) => {
-        e.preventDefault()
 
         setEventDate("")
         setEventDistance("");
         setEventName("")
+        e.preventDefault()
+
+    }
+
+    const clearInputs = (e) => {
+
+        setEventDate("")
+        setEventDistance("");
+        setEventName("")
+        e.preventDefault()
+
 
     }
 
