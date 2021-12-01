@@ -6,6 +6,8 @@ import { removeEvent, getAllEvents, updateEvent, createComment } from "../action
 import Card from "../components/Card"
 import Modal from "../components/Modal"
 
+import "../style/RunEvents.css"
+
 
 const RunEvents = ({ event, deleteEvent }) => {
     const { name, date, distance, _id, creator } = event

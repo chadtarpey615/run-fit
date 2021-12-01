@@ -6,13 +6,13 @@
   width: 80%;
   background: white;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-  border-radius: 8px;
+  border-radius: 18px;
 }
 
 .modal-header {
   width: 100%;
   padding: 1rem 0.5rem;
-  background: #2a006e;
+  background: linear-gradient(to right, #072f5f, #1261a0);
   color: white;
 }
 

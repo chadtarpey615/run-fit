@@ -31,13 +31,13 @@ const Navbar = () => {
 
                         <ul className="navbar-left">
                             <li>Welcome {userInfo.data.name || "User"}</li>
-                            <li><Link to="/calendar">Home</Link></li>
+                            <li><Link className="link" to="/calendar">Home</Link></li>
                         </ul>
 
 
                         <ul className="navbar-right">
 
-                            <li onClick={logoutHandler}><Link to="/login">Logout</Link></li>
+                            <li onClick={logoutHandler}><Link className="link" to="/login">Logout</Link></li>
                         </ul>
                     </div>
                 ) :
@@ -48,11 +48,11 @@ const Navbar = () => {
                             </Link>
                         </div>
                         <ul className="navbar-left">
-                            <li><Link to="/calendar">Home</Link></li>
+                            <li><Link className="link" to="/calendar">Home</Link></li>
                         </ul>
                         <ul className="navbar-right">
-                            <li><Link to="/login">Login</Link></li>
-                            <li><Link to="/register">Sign Up</Link></li>
+                            <li><Link className="link" to="/login">Login</Link></li>
+                            <li><Link className="link" to="/register">Sign Up</Link></li>
                         </ul>
                     </div>
                 }
