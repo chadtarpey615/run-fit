@@ -27,3 +27,4 @@ const authProtect = asyncHandler(async (req, res, next) => {
     }
 })
 export { authProtect }
+

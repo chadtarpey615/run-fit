@@ -26,7 +26,7 @@ const registerUser = asyncHandler(async (req, res) => {
             token: generateToken(user._id)
 
         })
-        console.log(user)
+        console.log(token)
     } else {
         res.status(400)
         throw new Error("Invalid user data")
@@ -48,7 +48,7 @@ const loginUser = asyncHandler(async (req, res) => {
             email: user.email,
             token: generateToken(user._id)
         })
-        console.log("user token", user.token, user._id)
+        console.log("user token", token, user._id)
     } else {
         res.status(401)
         throw new Error("Invalid email or password")

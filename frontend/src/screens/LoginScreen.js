@@ -7,6 +7,7 @@ import "../style/login.css"
 const LoginScreen = ({ history }) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("");
+    const [error, setError] = useState(false)
 
 
     const dispatch = useDispatch()
@@ -16,13 +17,29 @@ const LoginScreen = ({ history }) => {
     useEffect(() => {
         console.log(userLogin)
     })
-    const loginUser = (e) => {
+    const loginUser = async (e) => {
         e.preventDefault();
-        dispatch(
-            login(email, password)
-        )
 
-        history.push(`/calendar`)
+        try {
+            if (!email || !password) {
+                setError(true)
+                setTimeout(() => {
+                    setError(false)
+                }, 3000)
+
+            } else {
+                dispatch(
+                    login(email, password)
+                )
+                history.push(`/calendar`)
+
+            }
+
+
+
+        } catch (error) {
+
+        }
     }
 
     return (
@@ -30,6 +47,9 @@ const LoginScreen = ({ history }) => {
 
             <form onSubmit={loginUser}>
                 <p className="login-heading">Please Login </p>
+                {error && (
+                    <div><h3 style={{ color: "red" }}>Please fill out all forms </h3></div>
+                )}
                 <div className="login-box" >
                     <p>Email</p>
 
@@ -55,6 +75,9 @@ const LoginScreen = ({ history }) => {
 
 
             </form>
+
+
+
         </div>
     )
 }
