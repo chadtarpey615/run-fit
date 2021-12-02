@@ -54,7 +54,7 @@
 .header-line {
   position: absolute;
   top: 35%;
-  max-width: 50%;
+  max-width: 80%;
   width: 40%;
   height: 2px;
   background-color: #000;
@@ -63,4 +63,74 @@
 
 .header-text {
   margin-top: 5rem;
+}
+
+@media (max-width: 500px) {
+  .main-heading {
+    flex-direction: column;
+    margin: 1rem auto;
+  }
+
+  .heading {
+    margin: 1rem auto;
+    width: 80vw;
+    font-size: 2rem;
+  }
+
+  .header-line {
+    top: 25%;
+    width: 80%;
+  }
+
+  .header-text {
+    margin-top: 3rem;
+    margin-left: 20px;
+    font-size: 1.7rem;
+  }
+
+  .header-image img {
+    width: 500px;
+    height: 300px;
+  }
+  .main-btn button {
+    width: 8rem;
+    height: 4rem;
+    border-radius: 2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .heading {
+    margin: 1rem auto;
+    width: 90vw;
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 370px) {
+  .main {
+    height: 100vh;
+  }
+
+  .heading {
+    margin: 10px auto;
+    width: 90vw;
+    font-size: 2rem;
+  }
+
+  .header-line {
+    top: 30%;
+    width: 80%;
+  }
+
+  .main-btn {
+    padding: 1px;
+  }
+  .main-btn button {
+    width: 7rem;
+    height: 3rem;
+    border-radius: 2rem;
+    margin: 1rem auto;
+    padding: 1px;
+  }
 }

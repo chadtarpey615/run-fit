@@ -53,6 +53,45 @@
   justify-content: center;
 }
 
+/* mobile media */
+
+@media (max-width: 1025px) {
+  .calendar-container {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+  }
+
+  .DayPicker-Month {
+    width: 80vw;
+    height: 50vh;
+    margin-left: 6rem;
+  }
+
+  .clear-btn,
+  .show-btn {
+    width: 220px;
+    height: 40px;
+  }
+
+  .calendar-right {
+    width: 30vw;
+  }
+
+  .run-form h1 {
+    font-size: xx-large;
+  }
+
+  .run-form input {
+    width: 24rem;
+  }
+}
+
+@media (max-width: 945px) {
+  .run-form h1 {
+    font-size: x-large;
+  }
+}
+
 @media (max-width: 800px) {
   .calendar-container {
     grid-template-columns: repeat(1, 1fr);
@@ -66,5 +105,89 @@
 
   .calendar-right {
     width: 50vw;
+  }
+
+  .clear-btn,
+  .show-btn {
+    width: 120px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 620px) {
+  .run-form input {
+    width: 18rem;
+  }
+}
+
+@media (max-width: 550px) {
+  .calendar-container {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+  }
+
+  .DayPicker {
+    width: 90vw;
+    /* margin-left: 160px; */
+  }
+
+  .calendar-right {
+    width: 50vw;
+  }
+
+  .run-form h1 {
+    font-size: large;
+  }
+
+  .run-form input {
+    width: 15rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .calendar-container {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+  }
+
+  .DayPicker {
+    width: 90vw;
+    /* margin-left: 160px; */
+  }
+
+  .calendar-right {
+    width: 50vw;
+  }
+
+  .run-form h1 {
+    font-size: large;
+  }
+
+  .run-form input {
+    width: 14rem;
+  }
+}
+
+@media (max-width: 330px) {
+  .calendar-container {
+    grid-template-columns: repeat(1, 1fr);
+    width: 100%;
+  }
+
+  .DayPicker {
+    width: 80vw;
+    /* margin-left: 160px; */
+  }
+
+  .calendar-right {
+    width: 60vw;
+  }
+
+  .run-form h1 {
+    font-size: large;
+  }
+
+  .run-form input {
+    width: 13rem;
   }
 }
