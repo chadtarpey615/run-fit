@@ -2,12 +2,12 @@ import React from 'react'
 import { Link } from "react-router-dom"
 
 import "../style/homeScreen.css"
-import logo from "../style/download.jpeg"
+import logo from "../style/hero.jpeg"
 
 
 const HomeScreen = () => {
     return (
-        <div className="main">
+        <div className="main" >
             <div className="main-heading">
                 <header className="heading">
                     Welcome to Run-Fit
@@ -16,7 +16,7 @@ const HomeScreen = () => {
 
                 </header>
                 <div className="header-image">
-                    <img src={logo} alt="" />
+                    <img src={logo} alt="a picture of a man running" />
                 </div>
 
 

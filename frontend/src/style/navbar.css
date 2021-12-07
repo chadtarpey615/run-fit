@@ -54,7 +54,7 @@ ul {
   position: fixed;
   top: 85px;
   right: 0;
-  width: 90%;
+  width: 100%;
   height: 6%;
   background: linear-gradient(to right, #072f5f, #1261a0);
   color: #000;
@@ -62,6 +62,7 @@ ul {
   box-shadow: inset 0 4px 3px -3px rgb(0 0 0 / 10%),
     inset 0 4px 2px -2px rgb(0 0 0 / 7%);
   transition: all 0.3s;
+  display: none;
 }
 
 .hamburger {
@@ -103,6 +104,9 @@ ul {
   .hamburger {
     display: block;
   }
+  .mobile-menu {
+    display: block;
+  }
 
   .hidden {
     /* transform: translateX(100%); */
@@ -134,10 +138,12 @@ ul {
 
   .mobile-links {
     flex-direction: row;
+    justify-content: center;
   }
   .mobile-links a {
-    margin-right: 6px;
+    margin-right: 32px;
     margin-bottom: 16px;
+    font-size: large;
   }
 }
 

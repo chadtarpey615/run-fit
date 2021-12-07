@@ -51,13 +51,16 @@ export const getEventsReducer = (state = { events: [] }, action) => {
     }
 }
 
-export const updateEventReducer = (state = { events: [] }, action) => {
+export const updateEventReducer = (state = {}, action) => {
     switch (action.type) {
         case EVENT_UPDATE_REQUEST:
-            return { loading: true }
+            return {
+                loading: true
+            }
 
         case EVENT_UPDATE_SUCCESS:
             return {
+                loading: false,
                 success: true,
                 events: action.payload
             }
