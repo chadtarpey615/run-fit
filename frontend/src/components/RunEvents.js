@@ -53,12 +53,14 @@ const RunEvents = ({ event, deleteEvent }) => {
     // }
 
     const updateSubmitHandler = async (e, id) => {
+        console.log("run events", e.target.value)
         closeModal()
         await dispatch(updateEvent({
             _id: id,
             name: eventName,
             date: eventDate,
-            distance: eventDistance
+            distance: eventDistance,
+            creator: creator
         }))
         history.push("/")
         // dispatch(getAllEvents())
@@ -137,7 +139,7 @@ const RunEvents = ({ event, deleteEvent }) => {
 
                                 </div>
                                 <div >
-                                    <button onClick={(e) => updateSubmitHandler(e, _id)}>Update Event</button>
+                                    <button type="button" onClick={(e) => updateSubmitHandler(e, _id)}>Update Event</button>
 
                                 </div>
                             </form>

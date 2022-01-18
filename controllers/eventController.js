@@ -22,9 +22,11 @@ const saveEvent = asyncHandler(async (req, res) => {
 
     let user
 
-    try {
+    try
+    {
         user = await User.findById(_id)
-    } catch (error) {
+    } catch (error)
+    {
         console.log(error)
     }
 
@@ -49,10 +51,12 @@ const allEvents = asyncHandler(async (req, res) => {
 const getEventById = asyncHandler(async (req, res) => {
     const eventId = req.params.id
 
-    try {
+    try
+    {
         const response = await Event.findById(eventId)
         console.log(response.user)
-    } catch (error) {
+    } catch (error)
+    {
 
     }
 
@@ -62,13 +66,14 @@ const updateEvent = asyncHandler(async (req, res) => {
     const eventId = req.body.id
     console.log("event id line 62", eventId)
     console.log("req.body::", req.body)
-
     const { name, distance, date } = req.body
     let event
-    try {
+    try
+    {
         event = await Event.findById(eventId)
         console.log("eventtttt:", event)
-    } catch (error) {
+    } catch (error)
+    {
         console.log(error)
     }
 
@@ -76,9 +81,11 @@ const updateEvent = asyncHandler(async (req, res) => {
     event.date = date
     event.distance = distance
 
-    try {
+    try
+    {
         await event.save()
-    } catch (error) {
+    } catch (error)
+    {
         console.log(error)
     }
 
@@ -92,26 +99,31 @@ const deleteEvent = asyncHandler(async (req, res) => {
     const eventId = req.params.id
 
     let event
-    try {
+    try
+    {
         event = await Event.findById(eventId).populate("user")
 
-    } catch (error) {
+    } catch (error)
+    {
         console.log(error)
     }
 
-    if (!event) {
+    if (!event)
+    {
         console.log("no event found created by user")
     }
 
 
-    try {
+    try
+    {
         const sess = await Mongoose.startSession()
         sess.startTransaction()
         await event.remove({ session: sess })
         event.user.events.pull(event)
         await event.user.save({ session: sess })
         await sess.commitTransaction()
-    } catch (error) {
+    } catch (error)
+    {
         console.log(error)
     }
 
@@ -128,12 +140,14 @@ const addComment = asyncHandler(async (req, res) => {
 
     // console.log("request ::::::: ", req.body.comment)
 
-    try {
+    try
+    {
         event = await Event.findById(eventId).populate("comments")
 
 
 
-    } catch (error) {
+    } catch (error)
+    {
         console.log(error)
     }
 

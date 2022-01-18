@@ -26,7 +26,7 @@ const CalendarScreen = () => {
 
 
     const enterEventHandler = async (e) => {
-
+        e.preventDefault()
         await dispatch(createEvent({
             name: eventName,
             date: eventDate,

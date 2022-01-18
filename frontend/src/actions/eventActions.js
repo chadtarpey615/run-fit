@@ -3,7 +3,8 @@ import axios from "axios"
 
 export const createEvent = (event) => async (dispatch, getState) => {
     console.log(event)
-    try {
+    try
+    {
         dispatch({
             type: EVENT_CREATE_REQUEST
         })
@@ -25,7 +26,9 @@ export const createEvent = (event) => async (dispatch, getState) => {
             payload: data
         })
 
-    } catch (error) {
+
+    } catch (error)
+    {
         dispatch({
             type: EVENT_CREATE_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message,
@@ -35,7 +38,8 @@ export const createEvent = (event) => async (dispatch, getState) => {
 
 
 export const getAllEvents = (events) => async (dispatch) => {
-    try {
+    try
+    {
         dispatch({
             type: EVENT_GET_REQUEST
         })
@@ -49,7 +53,8 @@ export const getAllEvents = (events) => async (dispatch) => {
             payload: data
         })
 
-    } catch (error) {
+    } catch (error)
+    {
         dispatch({
             type: EVENT_GET_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message,
@@ -60,16 +65,17 @@ export const getAllEvents = (events) => async (dispatch) => {
 
 export const updateEvent = (data) => async (dispatch, getState) => {
     console.log("actions:", data._id)
-    try {
+    try
+    {
         dispatch({
             type: EVENT_UPDATE_REQUEST
         })
 
         const { userLogin: { userInfo } } = getState()
+        console.log("user stuff:", userInfo)
         const config = {
             headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${userInfo.token}`
+                "Content-Type": "application/json"
             }
         }
 
@@ -77,16 +83,16 @@ export const updateEvent = (data) => async (dispatch, getState) => {
             id: data._id,
             name: data.name,
             date: data.date,
-            distance: data.distance
+            distance: data.distance,
+            creator: userInfo.data.name
         }
         console.log(updatedEvent)
-        const { response } = await axios.patch(`/api/events/all-events/${data._id}`, updatedEvent, config)
-        await console.log(response)
+        const response = await axios.put(`/api/events/all-events/${data._id}`, updatedEvent, config)
 
 
         dispatch({
             type: EVENT_UPDATE_SUCCESS,
-            payload: response
+            payload: response.data
         })
 
 
@@ -94,7 +100,8 @@ export const updateEvent = (data) => async (dispatch, getState) => {
 
 
 
-    } catch (error) {
+    } catch (error)
+    {
         dispatch({
             type: EVENT_UPDATE_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message,
@@ -103,7 +110,8 @@ export const updateEvent = (data) => async (dispatch, getState) => {
 }
 
 export const removeEvent = (id) => async (dispatch, getState) => {
-    try {
+    try
+    {
         dispatch({
             type: EVENT_DELETE_REQUEST
         })
@@ -115,7 +123,8 @@ export const removeEvent = (id) => async (dispatch, getState) => {
             type: EVENT_DELETE_SUCCESS,
             payload: id
         })
-    } catch (error) {
+    } catch (error)
+    {
         console.log(error)
     }
 
@@ -124,7 +133,8 @@ export const removeEvent = (id) => async (dispatch, getState) => {
 
 export const createComment = (data) => async (dispatch, getState) => {
     console.log(data)
-    try {
+    try
+    {
         dispatch({
             type: EVENT_COMMENT_REQUEST
         })
@@ -149,7 +159,8 @@ export const createComment = (data) => async (dispatch, getState) => {
             payload: response
         })
 
-    } catch (error) {
+    } catch (error)
+    {
         dispatch({
             type: EVENT_COMMENT_FAIL,
             payload: error.response && error.response.data.message ? error.response.data.message : error.message,
